@@ -26,6 +26,14 @@ def make_landmark(videoPath, landmarkPath):
 
 dataDir = Path('data')
 landmarkDir = Path('landmark')
+try:
+    dataDir.mkdir()
+except:
+    None
+try:
+    landmarkDir.mkdir()
+except:
+    None
 
 for videoPath in dataDir.iterdir():
     isVideo, videoId = path2id(videoPath)
