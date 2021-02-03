@@ -1,0 +1,57 @@
+div.pagebody{
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    top: 0px;
+    left: 0px;
+    border: 1px solid #000000;
+  }
+  
+  div.score{
+      font-size: 200px;
+      text-align: center;
+      top: 100px;
+      left: 100px;
+      position: absolute;
+  }
+
+  div.undou{
+    font-size: 150px;
+    text-align: center;
+    top: 150px;
+    left: 700px;
+    position: absolute;
+}
+
+  div.graph{
+    width: 1600px;
+    height: 200px;
+    top: 560px;
+    left: 160px;
+    position: absolute;
+    border: solid 1px #000000;
+}
+
+button.save{
+    width: 390px;
+    height: 120px;
+    position: absolute;
+    top: 880px;
+    left: 430px;
+}
+
+button.retry{
+    width: 390px;
+    height: 120px;
+    position: absolute;
+    top: 880px;
+    left: 920px;
+}
+
+button.back_to_menu{
+    width: 390px;
+    height: 120px;
+    position: absolute;
+    top: 880px;
+    left: 1410px;
+}
