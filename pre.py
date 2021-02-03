@@ -20,7 +20,8 @@ def make_landmark(videoPath, landmarkPath):
         ret, frame = cap.read()
     print(len(frames))
     print(frames[0].shape)
-    y = model(frames)
+    # y = model(frames)
+    y = np.random.randn(18,2)
     np.save(landmarkPath, y)
 
 

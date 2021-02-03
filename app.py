@@ -11,7 +11,7 @@ landmark = np.array([])
 k = 0.00001
 scoreLog = []
 yLog = []
-resultDir
+resultDir = 'unknown'
 
 @eel.expose
 def select_dance(_id):
@@ -35,7 +35,8 @@ def load_landmark():
 @eel.expose
 def disp_score(t, frame):
     global landmark, scoreLog, yLog
-    y = model(frame)
+    # y = model(frame)
+    y = np.random.randn(18,2)
     lm = landmark[:,t]
     s = score(y,lm)
     yLog.append(y)
@@ -73,4 +74,4 @@ def save():
 
 
 eel.init("web")
-eel.start("start.html", port=8000)
+eel.start("select.html", port=8000)
