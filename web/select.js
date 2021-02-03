@@ -2,8 +2,10 @@
 
 //constants
 var NumOfMusics = 3;
-
 var selected_music = 30000;
+var music_id = ["0000", "0001", "0002"];
+var music_path;
+
 function changeSongRight(){
     //console.log("right was clicked");
     selected_music++;
@@ -19,7 +21,15 @@ function changeSongLeft(){
 }
 
 function goToPlaying(){
-    location.href = "./playing.html"
+    select_dance_f();
+    localStorage.setItem("selected_music", selected_music);
+    setTimeout(function(){
+        localStorage.setItem("music_path", music_path);
+        location.href = "./playing.html";}, 5);
+}
+
+async function select_dance_f() {
+    music_path = await eel.select_dance(music_id[selected_music%NumOfMusics])();
 }
 
 function goToResultLog(){

@@ -4,25 +4,27 @@
     <meta charset="UTF-8" />
     <title>dance</title>
     <link rel="stylesheet" href="result.css" />
+    <link rel="stylesheet" href="main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
     <script src="result.js"></script>
   </head>
-  <body>
+  <body onload="start();">
     <div class="pagebody">
 
         <!-- <div class="title_words">result</div> -->
 
         <!-- score -->
-        <div class="score">34.5</div>
-        <div class="undou">0000pt</div> 
+        <div class="score"></div>
+        <div class="undou"></div> 
 
         <!-- score graph -->
         <div class="graph"></div>
 
         <!-- buttons -->
-        <button onclick="save();" class="save">save</button>
-        <button onclick="retry();" class="retry">retry</button>
-        <button onclick="backToMenu();" class="back_to_menu">back to menu</button>
+        <button onclick="save();" class="btn-flat-stripe1" id="save" style="width:390px;height:120px">save</button>
+        <button onclick="retry();" class="btn-flat-stripe2" id="retry" style="width:390px;height:120px">retry</button>
+        <button onclick="backToMenu();" class="btn-flat-stripe3" id="back_to_menu" style="width:390px;height:120px">back to menu</button>
         
 
     </div>
