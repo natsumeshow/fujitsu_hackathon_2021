@@ -21,7 +21,7 @@ def select_dance(_id):
     if os.path.isfile(videoPath):
         isValid = True
         scoreLog = []
-        return 'data/{}.mp4'.format(id)
+        return '../data/{}.mp4'.format(id)
     else:
         isValid =False
         return 'error'
@@ -33,7 +33,7 @@ def load_landmark():
         landmark = np.load('landmark/{}.npy'.format(id))
 
 @eel.expose
-def disp_score(t, frame):
+def disp_score(t):
     global landmark, scoreLog, yLog
     # y = model(frame)
     y = np.random.randn(18,2)
