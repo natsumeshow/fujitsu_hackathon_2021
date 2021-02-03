@@ -55,3 +55,24 @@ button.back_to_menu{
     top: 880px;
     left: 1410px;
 }
+
+#save{
+    position: absolute;
+    top: 880px;
+    left: 430px;
+    font-size: 40px;
+}
+
+#retry{
+    position: absolute;
+    top: 880px;
+    left: 920px;
+    font-size: 40px;
+}
+
+#back_to_menu{
+    position: absolute;
+    top: 880px;
+    left: 1410px;
+    font-size: 40px;
+}
