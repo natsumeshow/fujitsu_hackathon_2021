@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>danceMain</title>
+    <style>
+      canvas, video{
+	  border: 1px solid gray;
+      }
+    </style>
+    <link rel="stylesheet" href="main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="result.js"></script>
+  </head>
+  <body>
+    <div class="pagebody">
+      
+      <!-- buttons -->
+      <button onclick="history.back()" class="simple_square_btn3" style="width:100px;height:50px">選択画面へ戻る</button>
+      <center>
+	<h3>選択した曲名を表示</h3>
+      </center>
+      
+      <!-- score -->
+      
+
+      <!-- score graph -->
+      <div class="graph"></div>
+
+    </div>
+  </body>
+  
+
+  <center><video id="camera" width="1400" height="600"></video></center>
+  <audio id="se" preload="auto">
+    <source src="Hyoshigi01-1.mp3" type="audio/mp3">
+  </audio>
+  
+  　<br>
+  <center>
+    <button onclick="Play1()" class="btn-flat-stripe1" style="width:150px;height:80px">再生</button>
+    <button onclick="Pause1()" class="btn-flat-stripe2" style="width:150px;height:80px">一時停止</button>
+    <button onclick="PlayFromFirst1()" class="btn-flat-stripe3" style="width:150px;height:80px">最初から再生</button>
+  </center>
+
+  
+  <script type="text/javascript">
+    //再生
+    function Play1(){
+	document.getElementById("test1").play();
+    }
+    //一時停止
+    function Pause1(){
+	document.getElementById("test1").pause();
+    }
+    //最初から再生
+    function PlayFromFirst1(){
+	document.getElementById("test1").currentTime=0;
+	document.getElementById("test1").play();
+    }
+    
+    window.onload = () => {
+	const video  = document.querySelector("#camera");
+	const canvas = document.querySelector("#picture");
+	const se     = document.querySelector('#se');
+
+	//カメラ設定
+	const constraints = {
+	    audio: false,
+	    video: {
+		width: 300,
+		height: 200,
+		facingMode: "user"   // フロントカメラを利用する
+		// facingMode: { exact: "environment" }  // リアカメラを利用する場合
+	    }
+	};
+
+	//カメラを<video>と同期
+	
+	navigator.mediaDevices.getUserMedia(constraints)
+	    .then( (stream) => {
+		video.srcObject = stream;
+		video.onloadedmetadata = (e) => {
+		    video.play();
+		};
+	    })
+	    .catch( (err) => {
+		console.log(err.name + ": " + err.message);
+	    });
+
+    };
+    
+    
+  </script>
+
+</html> 
