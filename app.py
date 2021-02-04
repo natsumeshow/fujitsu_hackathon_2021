@@ -62,7 +62,7 @@ def result():
             break
     figPath = os.path.join(resultDir,'score_log.png')
     plt.savefig(figPath)
-    return '{:.3f}'.format(np.mean(scoreLog)), figPath, 'dammy_undouryou'
+    return {'last_score':'{:.3f}'.format(np.mean(scoreLog)), 'figPath':figPath, 'movement':'100'
 
 
 @eel.expose
