@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>dance</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Bangers rel="stylesheet">
     <link rel="stylesheet" href="main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="/eel.js"></script>
@@ -15,11 +16,16 @@
         <div class="title_words">select music</div>
 
         <!-- thumbnail -->
+        <div id="thumbnail_shadow"></div>
         <img src="images/thumbnail_1.png" alt="thumbnail" class="thumbnail" onclick="goToPlaying();">
 
         <!-- change music -->
+        <!--
         <button onclick="changeSongRight();" class="change_song_right"></button>
+        -->
+        <a href="#" class="button" onclick="changeSongRight();" id="change_song_right"></a>
         <button onclick="changeSongLeft();" class="change_song_left"></button>
+        <a href="#" class="button" onclick="changeSongLeft();" id="change_song_left"></a>
 
         <!-- result history -->
         <button onclick="goToResultLog();" class="btn-flat-stripe1" style="width:390px;height:120px" id="result">result log</button>

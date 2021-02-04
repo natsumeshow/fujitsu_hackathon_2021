@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <title>dance</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="log.css">
+    <link rel="stylesheet" href="main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="select.js"></script>
   </head>
   <body>
-    <h1>result log</h1>
+    <h1 id="title_result_log">result log</h1>
+
+    <!-- calendar -->
+    <div id="caleandar"></div>
+    <button onclick="backToMenu();" class="btn-flat-stripe3" id="back_to_menu" style="width:200px;height:60px">back to menu</button>
+    <script type="text/javascript" src="caleandar.js"></script>
+    <script type="text/javascript" src="log.js"></script>
+
   </body>
 
   <script type="text/javascript">
