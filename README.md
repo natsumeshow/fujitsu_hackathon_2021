@@ -4,7 +4,9 @@
 ## Install
 Our method is based on tf-openpose. Before using our dance scoring system, you should first prepare tf-openpose.
 
+
 $ git clone https://www.github.com/ildoonet/tf-pose-estimation
+
 $ cd tf-pose-estimation
 
 ### Dependencies
@@ -25,11 +27,11 @@ $ conda create -n score_system python=3.6
 $ conda activate score_system
 
 
-# if you want to use GPU 
+if you want to use GPU 
 
 $ conda install -c anaconda tensorflow-gpu==1.14
 
-# if you want to use CPU 
+if you want to use CPU 
 
 $ conda install -c conda-forge tensorflow==1.14
 
@@ -71,7 +73,7 @@ $ git clone https://github.com/natsumeshow/fujitsu_hackathon_2021.git
 
 $ cp -r tf-pose-estimation/models/ fujitsu_hackathon_2021/
 
-## Demo
+## How ro run 
 To Do....
 
 
