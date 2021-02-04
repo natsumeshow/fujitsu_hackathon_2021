@@ -11,6 +11,7 @@ landmark = np.array([])
 k = 0.00001
 scoreLog = []
 yLog = []
+resultDir = 'unknown'
 
 @eel.expose
 def select_dance(_id):
@@ -20,7 +21,7 @@ def select_dance(_id):
     if os.path.isfile(videoPath):
         isValid = True
         scoreLog = []
-        return 'data/{}.mp4'.format(id)
+        return '../data/{}.mp4'.format(id)
     else:
         isValid =False
         return 'error'
@@ -32,9 +33,10 @@ def load_landmark():
         landmark = np.load('landmark/{}.npy'.format(id))
 
 @eel.expose
-def disp_score(t, frame):
+def disp_score(t):
     global landmark, scoreLog, yLog
-    y = model(frame)
+    # y = model(frame)
+    y = np.random.randn(18,2)
     lm = landmark[:,t]
     s = score(y,lm)
     yLog.append(y)
