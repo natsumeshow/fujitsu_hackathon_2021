@@ -11,7 +11,6 @@ landmark = np.array([])
 k = 0.00001
 scoreLog = []
 yLog = []
-resultDir
 
 @eel.expose
 def select_dance(_id):
@@ -63,7 +62,7 @@ def result():
             break
     figPath = os.path.join(resultDir,'score_log.png')
     plt.savefig(figPath)
-    return '{:.3f}'.format(np.mean(scoreLog)), figPath, 'dammy_undouryou'
+    return {'last_score':'{:.3f}'.format(np.mean(scoreLog)), 'figPath':figPath, 'movement':'100'
 
 
 @eel.expose
@@ -73,4 +72,4 @@ def save():
 
 
 eel.init("web")
-eel.start("start.html", port=8000)
+eel.start("select.html", port=8000)

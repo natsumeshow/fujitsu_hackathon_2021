@@ -15,7 +15,8 @@ function backToMenu(){
 
 function start(){
     document.getElementById("score").innerText = localStorage.last_score + "点";
-    document.getElementById("undou").innerText = localStorage.undouryou + "pt";
+    document.getElementById("undou").innerText = localStorage.movement + "pt";
+
     var graph_image = document.createElement("img");
     graph_image.src = localStorage.figPath;
     graph_image.alt = "graph";
