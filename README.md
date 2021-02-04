@@ -17,8 +17,6 @@ You need dependencies below.
 - tensorflow 1.4.1+
 - opencv3, protobuf, python3-tk
 - slidingwindow
-  - https://github.com/adamrehn/slidingwindow
-  - I copied from the above git repo to modify few things.
 
 
 $ conda create -n score_system python=3.6
@@ -61,7 +59,7 @@ $ bash download.sh
 
 
 
-# Maybe need install opencv again for video or webcam.
+### Maybe need install opencv again for video or webcam.
 
 $conda install -c conda-forge opencv=4.1.0
 
@@ -69,7 +67,7 @@ $ cd ~
 
 $ git clone https://github.com/natsumeshow/fujitsu_hackathon_2021.git
 
-## Copy pre-trained tf-openpose models to our score system folder.
+### Copy pre-trained tf-openpose models to our score system folder.
 
 $ cp -r tf-pose-estimation/models/ fujitsu_hackathon_2021/
 
