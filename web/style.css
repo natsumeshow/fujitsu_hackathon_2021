@@ -53,3 +53,17 @@ button.sort_musics{
     top: 880px;
     left: 580px;
 }
+
+#sort{
+    position: absolute;
+    top: 880px;
+    left: 580px;
+    font-size: 40px;
+}
+
+#result{
+    position: absolute;
+    top: 880px;
+    left: 90px;
+    font-size: 40px;
+}
