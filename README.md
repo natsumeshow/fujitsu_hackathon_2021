@@ -25,11 +25,11 @@ $ conda create -n score_system python=3.6
 $ conda activate score_system
 
 
-# - if you want to use GPU 
+# if you want to use GPU 
 
 $ conda install -c anaconda tensorflow-gpu==1.14
 
-# - if you want to use CPU 
+# if you want to use CPU 
 
 $ conda install -c conda-forge tensorflow==1.14
 
@@ -59,7 +59,7 @@ $ bash download.sh
 
 
 
-## Maybe need install opencv again for video or webcam.
+# Maybe need install opencv again for video or webcam.
 
 $conda install -c conda-forge opencv=4.1.0
 
