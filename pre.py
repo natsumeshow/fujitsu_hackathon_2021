@@ -1,6 +1,7 @@
 import cv2
 from pathlib import Path
 import numpy as np
+import model
 
 def path2id(videoPath):
     videoInfo = videoPath.name.split('.')
@@ -13,15 +14,21 @@ def path2id(videoPath):
 
 def make_landmark(videoPath, landmarkPath):
     cap = cv2.VideoCapture(videoPath)
-    frames = []
+    # fps = cap.get(cv2.CAP_PROP_FPS)
+    # frames = []
     ret, frame = cap.read()
+    lms = []
     while ret:
-        frames.append(frame)
+        # frames.append(frame)
         ret, frame = cap.read()
-    print(len(frames))
-    print(frames[0].shape)
-    y = model(frames)
-    np.save(landmarkPath, y)
+        lm = np.zeros(18,2)
+        y = model(frame)
+        for key in y:
+            lm[key,:] = y[key]
+        lms.append(lm)
+    # print(len(frames))
+    # print(frames[0].shape)
+    np.save(landmarkPath, np.array(lms))
 
 
 dataDir = Path('data')

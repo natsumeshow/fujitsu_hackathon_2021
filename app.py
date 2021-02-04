@@ -3,6 +3,8 @@ import os
 import numpy as np
 from matplotlib import pyplot as plt
 import uuid
+import cv2
+import model
 
 id = 'unknown'
 videoPath = ''
@@ -10,8 +12,10 @@ isValid = False
 landmark = np.array([])
 k = 0.00001
 scoreLog = []
-yLog = []
+lmLog = []
 resultDir = 'unknown'
+mirror = True
+size = ()
 
 @eel.expose
 def select_dance(_id):
@@ -34,14 +38,34 @@ def load_landmark():
 
 @eel.expose
 def disp_score(t):
-    global landmark, scoreLog, yLog
+    global landmark, scoreLog, lmLog, cap
+    ret, frame = cap.read()
+    if not ret:
+        return 'error'
+    if mirror:
+        frame = frame[:,::-1]
     # y = model(frame)
-    y = np.random.randn(18,2)
-    lm = landmark[:,t]
-    s = score(y,lm)
-    yLog.append(y)
+    # lm_cam = np.zeros(18,2)
+    # for key in y:
+    #     lm_cam[key,:] = y[key]
+    lm_cam = np.random.randn(18,2)
+    lm_cam = opt(lm_cam, lm_video)
+    is_point1, lm_video = landmark[:,t]
+    if not is_point1:
+        return 'error'
+    s = score(lm_cam,lm_video)
+    lmLog.append(lm_cam)
     scoreLog.append(s)
-    return '{:.3f}'.format(s)
+    return {'score':'{:.3f}'.format(s), 'landmarks':lm_cam.tolist()}
+
+def opt(a, b):
+    if a[1,0]==0, b[1,0]==0:
+        return False, False
+    da = a-a[1,:]
+    db = b-b[1,:]
+    p = np.sum((db[[8,11],:])**2) / np.sum((da[[8,11],:])**2)
+    return da*p+b[1,:]
+    
 
 def score(a,b):
     global k
@@ -69,9 +93,11 @@ def result():
 
 @eel.expose
 def save():
-    np.save(os.path.join(resultDir, np.array(yLog)))
+    global lmLog
+    np.save(os.path.join(resultDir, np.array(lmLog)))
     return 1
 
 
 eel.init("web")
 eel.start("select.html", port=8000)
+cap = cv2.VideoCapture(0)
