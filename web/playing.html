@@ -18,10 +18,9 @@
       <!-- buttons -->
       <button onclick="history.back()" class="simple_square_btn3" style="width:100px;height:50px">選択画面へ戻る</button>
       <button onclick="GoToResult()" class="btn-flat-stripe3" style="width:150px;height:80px">結果表示</button>
-
-      <!-- score -->
-      <div class="camera">
-	<video id="camera" width="1500" height="700"></video>
+      <!-- 動画指定場所 -->
+      <div class="movie">
+	<video id="movie" width="1500" height="700 src="../data/0000.mp4""></video>
       </div>
       <!-- <audio id="se" preload="auto">
 	<source src="Hyoshigi01-1.mp3" type="audio/mp3">
@@ -36,10 +35,7 @@
       </center>
       
       <!-- 再生終了すると結果画面へ -->
-      <video playsinline muted autoplay onended="">
-	<!-- 動画指定場所 -->
-	<source src="../data/0000.mp4">
-      </video>
+      <video playsinline muted autoplay onended="GoToResult()"></video>
       
     </div>
 
