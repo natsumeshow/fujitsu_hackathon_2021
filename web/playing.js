@@ -1,5 +1,5 @@
 function GoToResult(){
-    console.log("test1");
+    //console.log("test1");
     var val = result_f();
     setTimeout(function(){
     localStorage.setItem("last_score", val.last_score);
@@ -9,8 +9,8 @@ function GoToResult(){
 }
 
 async function result_f() {
-    console.log("test2");
+    //console.log("test2");
     var val = await eel.result()();
-    console.log(val.last_score);
+    //console.log(val.last_score);
     return val;
 }
