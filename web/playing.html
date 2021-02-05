@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="select.js"></script>
     <script src="result.js"></script>
-    <script src="playing.js"></script>
     <script type="text/javascript" src="/eel.js"></script>
   </head>
   <script type="text/javascript">
@@ -25,6 +24,7 @@
       <button onclick="history.back()" class="simple_square_btn3" style="width:100px;height:50px">選択画面へ戻る</button>
       <button onclick="GoToResult()" class="btn-flat-stripe3" style="width:150px;height:80px">結果表示</button>
       <!-- 動画指定場所 -->
+<<<<<<< HEAD
       <center>
 	<div class="movie">
 	  <video id="movie" width="1300" height="400" src="../data/0000.mp4"></video>
@@ -34,6 +34,17 @@
 	<video id="camera" width="100" height="100" ></video>
       </div>
 
+=======
+      <div class="movie">
+	  <video id="movie" width="1400" height="500" src="../data/0000.mp4" controls></video>
+      </div>
+      <canvas id="canvas" width="1400px" height="500px"></canvas>
+      <!-- <audio id="se" preload="auto">
+	<source src="Hyoshigi01-1.mp3" type="audio/mp3">
+      </audio> -->
+      
+      　<br>
+>>>>>>> 3b9361c453782d97963aca17197643b812125092
       <center>
 	<button onclick="Play1()" class="btn-flat-stripe1" style="width:150px;height:80px">再生</button>
 	<button onclick="Pause1()" class="btn-flat-stripe2" style="width:150px;height:80px">一時停止</button>
@@ -42,12 +53,15 @@
       </center>
       
       <!-- 再生終了すると結果画面へ -->
+      <!--
       <video playsinline muted autoplay onended="GoToResult()"></video>
+      -->
       
     </div>
 
     <script type="text/javascript">
       //再生
+<<<<<<< HEAD
       //     function Play1(){
       //   document.getElementById("test1").play();
       // }
@@ -70,6 +84,11 @@
 	  //drawMatchRate(val.score);
 	  //drawStickFig(val.landmark);
       }
+=======
+  //     function Play1(){
+  //   document.getElementById("test1").play();
+  // }
+>>>>>>> 3b9361c453782d97963aca17197643b812125092
 
       //一時停止
       function Pause1(){
@@ -112,5 +131,6 @@
 	};
       </script>
 
+    <script src="playing.js"></script>
   </body>
 </html>
