@@ -33,23 +33,24 @@ except:
 
 @eel.expose
 def select_dance(_id):
-    global id, videoPath, isValid, scoreLog, cap
+    global id, videoPath, isValid, scoreLog, cap, landmark
     id = _id
     videoPath = 'data/{}.mp4'.format(id)
     if os.path.isfile(videoPath):
         isValid = True
         scoreLog = []
         cap = cv2.VideoCapture(0+cv2.CAP_DSHOW)
+        landmark = np.load('landmark/{}.npy'.format(id))
         return '../data/{}.mp4'.format(id)
     else:
         isValid =False
         return 'error'
 
-@eel.expose
-def load_landmark():
-    global isValid, landmark
-    if isValid:
-        landmark = np.load('landmark/{}.npy'.format(id))
+# @eel.expose
+# def load_landmark():
+#     global isValid, landmark
+#     if isValid:
+#         landmark = np.load('landmark/{}.npy'.format(id))
 
 @eel.expose
 def disp_score(t):
@@ -105,7 +106,7 @@ def result():
             break
     figPath = os.path.join(resultDir,'score_log.png')
     plt.savefig(figPath)
-    return {'last_score':'{:.3f}'.format(np.mean(scoreLog)), 'figPath':figPath, 'movement':'100'}
+    return {'last_score':'{:.3f}'.format(np.mean(scoreLog)), 'figPath':'../'+figPath, 'movement':'100'}
 
 
 @eel.expose
