@@ -44,8 +44,28 @@
     <script type="text/javascript">
       //再生
       function Play1(){
-	  document.getElementById("test1").play();
-	}
+    document.getElementById("test1").play();
+  }
+  
+  function Play1(){
+
+        var id = setInterval(function(){
+                commToPy();
+        }, 1000); //50ms ごとにpython側へ動画の再生時間の情報を送る
+}
+
+var time = 1;
+async function commToPy() {
+    //console.log("test");
+    time ++;
+    let val = await eel.disp_score(time)();
+    //console.log(val + " from Python");
+
+    //deleteCanvas();
+    //drawMatchRate(val.score);
+    //drawStickFig(val.landmark);
+}
+
 	//一時停止
 	function Pause1(){
 	    document.getElementById("test1").pause();
