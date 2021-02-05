@@ -1,18 +1,16 @@
-function GoToResult(){
+function goToResult(){
     //console.log("test1");
-    var val = result_f();
+    result_f();
     setTimeout(function(){
-    localStorage.setItem("last_score", val.last_score);
-    localStorage.setItem("figPath", val.figPath);
-    localStorage.setItem("movement", val.movement);
-    location.href='result.html';}, 5000);
+        location.href='result.html';
+    }, 10000);
 }
 
 async function result_f() {
-    //console.log("test2");
     var val = await eel.result()();
-    //console.log(val.last_score);
-    return val;
+    localStorage.setItem("last_score", val.last_score);
+    localStorage.setItem("figPath", val.figPath);
+    localStorage.setItem("movement", val.movement);
 }
 
 
@@ -34,24 +32,37 @@ function getCurrentTime(){
 }
 
 async function Play1(){
+    console.log("clicked");
     if(flag){
         flag = false;
         setTimeout(function(){
             v.play();
+            console.log("started");
+
         },3000);
 
         var videoFlag = true;
         while(videoFlag){
             if(getCurrentTime()==-2){
                 videoFlag = false;
+                goToResult();
             }
-            let val = await eel.analyze(getCurrentTime)();
-            console.log(val.score);
-            deleteCanvas();
-            drawMatchRate(val.score);
-            drawStickFig(val.landmark);
+
+            var val = await eel.disp_score(getCurrentTime())();
+
+            if(val.isPlaying){
+                //console.log(val.score);
+                deleteCanvas();
+                drawMatchRate(val.score);
+                drawStickFig(val.landmark);
+            }
         }
     }
+}
+
+function Pause1(){
+    v.pause();
+    flag = true;
 }
 
 function deleteCanvas(){

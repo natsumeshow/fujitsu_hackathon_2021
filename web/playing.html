@@ -21,7 +21,8 @@
 	<!-- 動画指定場所 -->
 	<center>
 	  <div class="movie">
-	    <video id="movie" width="1300" height="400" src="../data/0000.mp4"></video>
+		<video id="movie" width="1200px" height="675px" src="../data/0000.mp4"></video>
+		<canvas id="canvas" width="1200px" height="675px"></canvas>
 	  </div>
 	</center>
 	
@@ -47,13 +48,8 @@
 	    
       </div>
 
-      <script type="text/javascript">
-	//再生
-
-	//一時停止
-	function Pause1(){
-	    document.getElementById("test1").pause();
-	}
+	  <script type="text/javascript">
+	  
 	//最初から再生
 	function PlayFromFirst1(){
 	    document.getElementById("test1").currentTime=0;
@@ -89,6 +85,7 @@
 		});
 
 	};
+	
       </script>
 
       <script src="playing.js"></script>

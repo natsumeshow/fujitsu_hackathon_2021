@@ -24,16 +24,17 @@ function goToPlaying(){
     select_dance_f();
     localStorage.setItem("selected_music", selected_music);
     setTimeout(function(){
-        localStorage.setItem("music_path", music_path);
-        location.href = "./playing.html";}, 5);
+        location.href = "./playing.html";
+    }, 5);
 }
 
 async function select_dance_f() {
     music_path = await eel.select_dance(music_id[selected_music%NumOfMusics])();
+    localStorage.setItem("music_path", music_path);
 }
 
 function goToResultLog(){
-    location.href = "./log.html"
+    location.href = "./log.html";
 }
 
 function sortMusics(){

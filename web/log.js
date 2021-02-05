@@ -10,5 +10,5 @@ var element = document.getElementById('caleandar');
 caleandar(element, events, settings);
 
 function backToMenu(){
-    location.href = "./select.html"
+    window.location.href = "select.html"
 }

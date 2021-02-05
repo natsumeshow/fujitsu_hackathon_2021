@@ -230,13 +230,25 @@ button.btn-flat-stripe3:hover {
     background: repeating-linear-gradient(-45deg, #ccffd8, #ccffd8 5px,#e9ffed 5px,#e9ffed 9px);
 }
 
+div.movie{
+    height: 675px;
+    width: 1200px;
+    position: relative;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
 #canvas {
-    /*
-    width: 1280px;
-    height: 800px;
-    top: 100px;
+    top: 0px;
     left: 0px;
-    */
     position: absolute;
     background: rgba(0, 0, 0, 0);
+}
+
+#movie {
+    top: 0px;
+    left: 0px;
+    position: absolute;
 }
