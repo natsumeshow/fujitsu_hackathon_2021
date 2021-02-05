@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="select.js"></script>
     <script src="result.js"></script>
-    <script src="playing.js"></script>
     <script type="text/javascript" src="/eel.js"></script>
   </head>
   <script type="text/javascript">
@@ -20,8 +19,9 @@
       <button onclick="GoToResult()" class="btn-flat-stripe3" style="width:150px;height:80px">結果表示</button>
       <!-- 動画指定場所 -->
       <div class="movie">
-	<video id="movie" width="1400" height="500" src="../data/0000.mp4"></video>
+	  <video id="movie" width="1400" height="500" src="../data/0000.mp4" controls></video>
       </div>
+      <canvas id="canvas" width="1400px" height="500px"></canvas>
       <!-- <audio id="se" preload="auto">
 	<source src="Hyoshigi01-1.mp3" type="audio/mp3">
       </audio> -->
@@ -35,7 +35,9 @@
       </center>
       
       <!-- 再生終了すると結果画面へ -->
+      <!--
       <video playsinline muted autoplay onended="GoToResult()"></video>
+      -->
       
     </div>
 
@@ -44,25 +46,6 @@
   //     function Play1(){
   //   document.getElementById("test1").play();
   // }
-  
-  function Play1(){
-
-        var id = setInterval(function(){
-                commToPy();
-        }, 1000); //50ms ごとにpython側へ動画の再生時間の情報を送る
-}
-
-var time = 1;
-async function commToPy() {
-    //console.log("test");
-    time ++;
-    let val = await eel.disp_score(time)();
-    //console.log(val + " from Python");
-
-    //deleteCanvas();
-    //drawMatchRate(val.score);
-    //drawStickFig(val.landmark);
-}
 
 	//一時停止
 	function Pause1(){
@@ -105,5 +88,6 @@ async function commToPy() {
 	};
       </script>
 
+    <script src="playing.js"></script>
   </body>
 </html>
