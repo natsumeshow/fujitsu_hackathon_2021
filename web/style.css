@@ -1,14 +1,19 @@
+body{
+  background-image: url("images/black0029.png");
+  background-size: cover;
+  font-family: 'Bangers', cursive;
+}
+
 div.pagebody{
   position: relative;
   width: 1920px;
   height: 1080px;
   top: 0px;
   left: 0px;
-  border: 1px solid #000000;
 }
 
 div.title_words{
-    font-size: 50px;
+    font-size: 100px;
     text-align: center;
     margin: 100px auto;
 }
@@ -19,51 +24,68 @@ img.thumbnail{
     position: absolute;
     top: 228px;
     left: 480px;
-    border: 1px solid #000000;
 }
 
-button.change_song_right{
-    width: 50px;
+#thumbnail_shadow{
+    width: 960px;
+    height: 540px;
+    position: absolute;
+    top: 238px;
+    left: 490px;
+    background-color: #444444;
+}
+
+/* select button */
+a {
+    -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    display: block;
+    margin: 20px auto;
+    max-width: 180px;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px 30px;
+  }
+  
+  a.button {
+    color: rgba(30, 22, 54, 0.6);
+    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+  }
+  
+  a.button:hover {
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+  }
+
+#change_song_right{
+    width: 5px;
     height: 300px;
     position: absolute;
-    top: 340px;
-    left: 1550px;
+    top: 300px;
+    left: 1520px;
 }
 
-button.change_song_left{
-    width: 50px;
+#change_song_left{
+    width: 5px;
     height: 300px;
     position: absolute;
-    top: 340px;
-    left: 314px;
-}
-
-button.result_log{
-    width: 390px;
-    height: 120px;
-    position: absolute;
-    top: 880px;
-    left: 90px;
-}
-
-button.sort_musics{
-    width: 390px;
-    height: 120px;
-    position: absolute;
-    top: 880px;
-    left: 580px;
+    top: 300px;
+    left: 344px;
 }
 
 #sort{
     position: absolute;
     top: 880px;
-    left: 580px;
+    left: 1020px;
     font-size: 40px;
 }
 
 #result{
     position: absolute;
     top: 880px;
-    left: 90px;
+    left: 500px;
     font-size: 40px;
 }
