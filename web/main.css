@@ -1,15 +1,26 @@
-.movie{
-    background: pink;
-    width: 150px;
-    height: 150px;
-    position: absolute;	
-    top:700px;
-    right:0px;
+div.pagebody{
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    top: 0px;
+    left: 0px;
+}
+
+div.right{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+div.bottom{
+    position: absolute;
+    bottom:0;
+    right: 800px;
 }
 
 .underTheEarth {
-    height: 500px;
-    width: 1500px;
+    height: 1080px;
+    width: 1920px;
     min-height: 100vh;
     background:
 }
