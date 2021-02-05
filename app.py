@@ -4,7 +4,16 @@ import numpy as np
 from matplotlib import pyplot as plt
 import uuid
 import cv2
-import model
+try:
+    from model import model
+except Exception as e:
+    print(e)
+    print("import dammy model")
+    from dammy import model
+try:
+    from tf_pose.networks import get_graph_path
+except Exception as e:
+    print(e)
 
 id = 'unknown'
 videoPath = ''
@@ -15,7 +24,12 @@ scoreLog = []
 lmLog = []
 resultDir = 'unknown'
 mirror = True
-size = ()
+# size = ()
+w, h = 432, 368
+try:
+	e = TfPoseEstimator(get_graph_path(args.model), target_size=(w, h), tf_config=tf.ConfigProto(log_device_placement=True))
+except:
+    e = 0
 
 @eel.expose
 def select_dance(_id):
@@ -44,22 +58,22 @@ def disp_score(t):
         return 'error'
     if mirror:
         frame = frame[:,::-1]
-    # y = model(frame)
-    # lm_cam = np.zeros(18,2)
-    # for key in y:
-    #     lm_cam[key,:] = y[key]
-    lm_cam = np.random.randn(18,2)
-    lm_cam = opt(lm_cam, lm_video)
+    y = model(frame)
+    lm_cam = np.zeros(18,2)
+    for key in y:
+        lm_cam[key,:] = y[key]
+    # lm_cam = np.random.randn(18,2)
     is_point1, lm_video = landmark[:,t]
+    lm_cam = opt(lm_cam, lm_video)
     if not is_point1:
         return 'error'
     s = score(lm_cam,lm_video)
     lmLog.append(lm_cam)
     scoreLog.append(s)
-    return {'score':'{:.3f}'.format(s), 'landmarks':lm_cam.tolist()}
+    return {'score':'{:.3f}'.format(s), 'landmarks':lm_cam.tolist()[:14]}
 
 def opt(a, b):
-    if a[1,0]==0, b[1,0]==0:
+    if a[1,0]==0 and b[1,0]==0:
         return False, False
     da = a-a[1,:]
     db = b-b[1,:]

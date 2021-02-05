@@ -7,11 +7,14 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import time
-import pandas as pd
+# import pandas as pd
 from tf_pose import common
 from tf_pose.common import CocoPart
 from tf_pose.tensblur.smoother import Smoother
-import tensorflow.contrib.tensorrt as trt
+try:
+    import tensorflow.contrib.tensorrt as trt
+except:
+    from tensorflow.python.compiler.tensorrt import trt_convert as trt
 
 try:
     from tf_pose.pafprocess import pafprocess

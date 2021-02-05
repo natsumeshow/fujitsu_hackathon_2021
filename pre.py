@@ -1,7 +1,7 @@
 import cv2
 from pathlib import Path
 import numpy as np
-import model
+from dammy import model
 
 def path2id(videoPath):
     videoInfo = videoPath.name.split('.')
