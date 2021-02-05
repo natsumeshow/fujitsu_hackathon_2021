@@ -21,11 +21,12 @@ def make_landmark(videoPath, landmarkPath):
     while ret:
         # frames.append(frame)
         ret, frame = cap.read()
-        lm = np.zeros(18,2)
-        y = model(frame)
+        lm = np.zeros([18,2])
+        y = model(frame, 0, (True,True), 4)
         for key in y:
             lm[key,:] = y[key]
         lms.append(lm)
+    print(np.array(lms).shape)
     # print(len(frames))
     # print(frames[0].shape)
     np.save(landmarkPath, np.array(lms))

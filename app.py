@@ -27,18 +27,19 @@ mirror = True
 # size = ()
 w, h = 432, 368
 try:
-	e = TfPoseEstimator(get_graph_path(args.model), target_size=(w, h), tf_config=tf.ConfigProto(log_device_placement=True))
+	e = TfPoseEstimator(get_graph_path(model), target_size=(w, h), tf_config=tf.ConfigProto(log_device_placement=True))
 except:
     e = 0
 
 @eel.expose
 def select_dance(_id):
-    global id, videoPath, isValid, scoreLog
+    global id, videoPath, isValid, scoreLog, cap
     id = _id
     videoPath = 'data/{}.mp4'.format(id)
     if os.path.isfile(videoPath):
         isValid = True
         scoreLog = []
+        cap = cv2.VideoCapture(0+cv2.CAP_DSHOW)
         return '../data/{}.mp4'.format(id)
     else:
         isValid =False
@@ -58,19 +59,21 @@ def disp_score(t):
         return 'error'
     if mirror:
         frame = frame[:,::-1]
-    y = model(frame)
-    lm_cam = np.zeros(18,2)
+    y = model(frame,e,(True,True),4)
+    lm_cam = np.zeros([18,2])
     for key in y:
         lm_cam[key,:] = y[key]
     # lm_cam = np.random.randn(18,2)
-    is_point1, lm_video = landmark[:,t]
+    lm_video = landmark[t,:,:]
+    is_point1 = False if lm_video[1,0]==-1 else True
     lm_cam = opt(lm_cam, lm_video)
     if not is_point1:
         return 'error'
     s = score(lm_cam,lm_video)
     lmLog.append(lm_cam)
     scoreLog.append(s)
-    return {'score':'{:.3f}'.format(s), 'landmarks':lm_cam.tolist()[:14]}
+    print({'score':'{:.3f}'.format(s), 'landmark':lm_cam.tolist()[:14]})
+    return {'score':'{:.3f}'.format(s), 'landmark':lm_cam.tolist()[:14]}
 
 def opt(a, b):
     if a[1,0]==0 and b[1,0]==0:
@@ -112,6 +115,5 @@ def save():
     return 1
 
 
-eel.init("web")
-eel.start("select.html", port=8000)
-cap = cv2.VideoCapture(0)
+eel.init("./")
+eel.start("web/select.html", port=8000)
