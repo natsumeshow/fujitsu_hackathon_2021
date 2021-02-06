@@ -19,7 +19,11 @@
 	
 	<!-- 動画指定場所 -->
 	<div class="movie">
+<<<<<<< HEAD
 	  <video id="movie" src="../data/0000.mp4"></video>
+=======
+	  <video id="movie"></video>
+>>>>>>> 0718196bbaef1fd46b47665e7a5ebba849218262
 	  <canvas id="canvas" height="950px" width="1670px"></canvas>
 	</div>
 	
@@ -54,15 +58,19 @@
       <script type="text/javascript">
 	
 	//最初から再生
-	function PlayFromFirst1(){
-	    document.getElementById("test1").currentTime=0;
-	    document.getElementById("test1").play();
-	}
 	
+<<<<<<< HEAD
 	//window.onload = () => {
 	    //const video  = document.querySelector("#camera");
 	    //const canvas = document.querySelector("#picture");
 	    // const se     = document.querySelector('#se');
+=======
+	window.onload = () => {
+		document.getElementById('movie').setAttribute("src", localStorage.music_path);
+	    const video  = document.querySelector("#camera");
+	   //const canvas = document.querySelector("#picture");
+	   // const se     = document.querySelector('#se');
+>>>>>>> 0718196bbaef1fd46b47665e7a5ebba849218262
 
 	    //カメラ設定
 	    /*
