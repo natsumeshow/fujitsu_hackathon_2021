@@ -3,20 +3,21 @@
 //constants
 var NumOfMusics = 3;
 var selected_music = 30000;
+var thumbnail_path = ["1", "2", "3"];
 var music_id = ["0000", "0001", "0002"];
 var music_path;
 
 function changeSongRight(){
     //console.log("right was clicked");
     selected_music++;
-    var pass = "./images/thumbnail_" + (selected_music%NumOfMusics+1) + ".png" ;
+    var pass = "./images/thumbnail_" + (thumbnail_path[selected_music%NumOfMusics]) + ".png" ;
     $(".thumbnail").attr("src",pass);
 }
 
 function changeSongLeft(){
     //console.log("left was clicked");
     selected_music--;
-    var pass = "./images/thumbnail_" + (selected_music%NumOfMusics+1) + ".png" ;
+    var pass = "./images/thumbnail_" + (thumbnail_path[selected_music%NumOfMusics]) + ".png" ;
     $(".thumbnail").attr("src",pass);
 }
 
@@ -38,5 +39,6 @@ function goToResultLog(){
 }
 
 function sortMusics(){
-    console.log("sorted!");
+    thumbnail_path.reverse();
+    music_id.reverse();
 }
