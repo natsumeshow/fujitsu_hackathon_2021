@@ -12,3 +12,9 @@ caleandar(element, events, settings);
 function backToMenu(){
     location.href = "select.html";
 }
+
+/*
+function loadEvents(){
+    eel.loadEvents_p();
+}
+*/

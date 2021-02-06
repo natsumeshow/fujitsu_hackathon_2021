@@ -3,7 +3,7 @@ function goToResult(){
     result_f();
     setTimeout(function(){
         location.href='result.html';
-    }, 10);
+    }, 50);
 }
 
 async function result_f() {
@@ -21,6 +21,15 @@ var ctx = canvas.getContext('2d');
 var v = document.getElementById("movie");
 var flag = true;
 
+//var picture = document.getElementById('picture');
+//var ctx2 = picture.getContext('2d');
+
+//const video  = document.querySelector("#camera");
+
+//var imageType = "image/png";
+
+
+
 function getCurrentTime(){
     if(console.currentTime!=0 && !v.ended && !v.paused){
         return v.currentTime;
@@ -30,6 +39,7 @@ function getCurrentTime(){
         return -1;
     }
 }
+
 
 async function Play1(){
     console.log("clicked");
@@ -60,6 +70,45 @@ async function Play1(){
         }
     }
 }
+
+/*
+function Play1(){
+    if(flag){
+        flag = false;
+        setTimeout(function(){
+            v.play();
+        },3000);
+
+        var id = setInterval(function(){
+            if(getCurrentTime()>0){
+                commToPy();
+            }else if(getCurrentTime()==-2){
+                clearInterval(id);
+                goToResult();
+            }
+        }, 10000); //50ms ごとにpython側へ動画の再生時間の情報を送る
+    }
+}
+
+async function commToPy() {
+    //console.log("test");
+    const startTime = performance.now(); 
+    let val = await eel.disp_score(getCurrentTime(),getBase64())();
+    const endTime = performance.now();
+    console.log(endTime - startTime);
+
+    deleteCanvas();
+    drawMatchRate(val.score);
+    //document.getElementById("scorescore").innerHTML = val.score;
+    drawStickFig(val.landmark);
+}
+
+function getBase64(){
+    //console.log("testestest")
+    ctx2.drawImage(video, 0, 0, picture.width, picture.height);
+    return picture.toDataURL(imageType);
+}
+*/
 
 function Pause1(){
     v.pause();
