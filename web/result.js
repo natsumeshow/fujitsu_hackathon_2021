@@ -5,7 +5,7 @@ function save(){
 }
 
 async function retry() {
-    music_path = await eel.select_dance(localStorage.music_id)();
+    var music_path = await eel.select_dance(localStorage.music_id)();
     location.href = "./playing.html";
 }
 
