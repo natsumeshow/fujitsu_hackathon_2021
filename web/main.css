@@ -7,10 +7,10 @@ div.pagebody{
 }
 
 div.movie{
-    height: 1100px;
-    width: 1870px;
+    height: 950px;
+    width: 1670px;
     position: absolute;
-    top: -5px;
+    top: 15px;
     right: 25px;
 }
 
@@ -26,6 +26,14 @@ div.movie{
     
 }
 */
+
+div.canvas{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 68px;
+    right: 25px;
+}
 
 div.camera{
     position: absolute;
@@ -265,4 +273,5 @@ button.btn-flat-stripe3:hover {
     top: 0px;
     left: 0px;
     position: absolute;
+    width: 100%;
 }
