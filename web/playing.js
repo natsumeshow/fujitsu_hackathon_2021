@@ -66,6 +66,13 @@ function Pause1(){
     flag = true;
 }
 
+async function PlayFromFirst1() {
+    v.pause();
+    flag = true;
+    var music_path = await eel.select_dance(localStorage.music_id)();
+    location.href = "./playing.html";
+}
+
 function deleteCanvas(){
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
 }

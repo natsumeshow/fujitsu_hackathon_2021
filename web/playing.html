@@ -19,7 +19,7 @@
 	
 	<!-- 動画指定場所 -->
 	<div class="movie">
-	  <video id="movie" src="koi.mp4"></video>
+	  <video id="movie"></video>
 	  <canvas id="canvas" height="950px" width="1670px"></canvas>
 	</div>
 	<!-- 小窓 -->
@@ -48,12 +48,9 @@
       <script type="text/javascript">
 	
 	//最初から再生
-	function PlayFromFirst1(){
-	    document.getElementById("test1").currentTime=0;
-	    document.getElementById("test1").play();
-	}
 	
 	window.onload = () => {
+		document.getElementById('movie').setAttribute("src", localStorage.music_path);
 	    const video  = document.querySelector("#camera");
 	   //const canvas = document.querySelector("#picture");
 	   // const se     = document.querySelector('#se');
