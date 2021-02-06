@@ -4,9 +4,9 @@ function save(){
     console.log("save");
 }
 
-function retry(){
-    location.href = "./playing.html"
-    
+async function retry() {
+    music_path = await eel.select_dance(localStorage.music_id)();
+    location.href = "./playing.html";
 }
 
 function backToMenu(){
