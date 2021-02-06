@@ -21,17 +21,16 @@
 	<!-- 動画指定場所 -->
 	<center>
 	  <div class="movie">
-		<video id="movie" width="1200px" height="675px" src="../data/0000.mp4"></video>
-		<canvas id="canvas" width="1200px" height="675px"></canvas>
+	    <video id="movie" width="1400px" height="800px" src="../data/0000.mp4"></video>
+	    <canvas id="canvas" width="1200px" height="675px"></canvas>
+	    <!-- 小窓 -->
+	    <div class="right">
+	      <div class="camera">
+		<video id="camera" width="300" height="250" ></video>
+	      </div>
+	    </div>
 	  </div>
 	</center>
-	
-	<!-- 小窓 -->
-	<div class="right">
-	  <div class="camera">
-	    <video id="camera" width="400" height="300" ></video>
-	  </div>
-	</div>
 
 	<br>
 	<!-- buttons -->
@@ -48,8 +47,8 @@
 	    
       </div>
 
-	  <script type="text/javascript">
-	  
+      <script type="text/javascript">
+	
 	//最初から再生
 	function PlayFromFirst1(){
 	    document.getElementById("test1").currentTime=0;
