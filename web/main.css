@@ -6,16 +6,23 @@ div.pagebody{
     left: 0px;
 }
 
-div.right{
-    position: absolute;
-    bottom: 0;
-    right: 0;
+div.movie{
+    bottom: 170px;
+    right: 335px;
+    position: relative;
 }
+
+div.camera{
+    position: absolute;
+    bottom: 68px;
+    right: 27px;
+}
+
 
 div.bottom{
     position: absolute;
-    bottom:0;
-    right: 600px;
+    bottom:0px;
+    right: 650px;
 }
 
 .underTheEarth {
