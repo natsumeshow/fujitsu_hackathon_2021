@@ -3,7 +3,7 @@ function goToResult(){
     result_f();
     setTimeout(function(){
         location.href='result.html';
-    }, 10000);
+    }, 10);
 }
 
 async function result_f() {
