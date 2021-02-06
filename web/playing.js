@@ -46,15 +46,16 @@ async function Play1(){
             if(getCurrentTime()==-2){
                 videoFlag = false;
                 goToResult();
-            }
+            }else{
 
-            var val = await eel.disp_score(getCurrentTime())();
+                var val = await eel.disp_score(getCurrentTime())();
 
-            if(val.isPlaying){
-                //console.log(val.score);
-                deleteCanvas();
-                drawMatchRate(val.score);
-                drawStickFig(val.landmark);
+                if(val.isPlaying){
+                    //console.log(val.score);
+                    deleteCanvas();
+                    drawMatchRate(val.score);
+                    drawStickFig(val.landmark);
+                }
             }
         }
     }
