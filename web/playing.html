@@ -19,7 +19,8 @@
 	
 	<!-- 動画指定場所 -->
 	<div class="movie">
-	  <video id="movies" width="1870px" height="1100px" src="koi.mp4"></video>
+	  <video id="movie" width="1870px" height="1100px" src="koi.mp4"></video>
+	  <canvas id="canvas" width="1870px" height="1100px"></canvas>
 	</div>
 	<!-- 小窓 -->
 	<div class="camera">
@@ -54,8 +55,8 @@
 	
 	window.onload = () => {
 	    const video  = document.querySelector("#camera");
-	    const canvas = document.querySelector("#picture");
-	    const se     = document.querySelector('#se');
+	   //const canvas = document.querySelector("#picture");
+	   // const se     = document.querySelector('#se');
 
 	    //カメラ設定
 	    const constraints = {

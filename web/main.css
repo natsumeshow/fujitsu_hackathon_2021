@@ -7,15 +7,30 @@ div.pagebody{
 }
 
 div.movie{
-    bottom: 170px;
-    right: 335px;
-    position: relative;
+    height: 1100px;
+    width: 1870px;
+    position: absolute;
+    top: -5px;
+    right: 25px;
 }
+
+/*
+
+div.movie{
+    height: 1100px;
+    width: 1870px;
+    position: relative;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+*/
 
 div.camera{
     position: absolute;
     bottom: 68px;
-    right: 27px;
+    right: 25px;
 }
 
 
@@ -237,15 +252,7 @@ button.btn-flat-stripe3:hover {
     background: repeating-linear-gradient(-45deg, #ccffd8, #ccffd8 5px,#e9ffed 5px,#e9ffed 9px);
 }
 
-div.movie{
-    height: 675px;
-    width: 1200px;
-    position: relative;
-    margin-top: 3%;
-    margin-left: auto;
-    margin-right: auto;
-    
-}
+
 
 #canvas {
     top: 0px;
