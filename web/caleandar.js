@@ -44,6 +44,7 @@ var Calendar = function(model, options, date){
   };
   
   function createCalendar(calendar, element, adjuster){
+    console.log("create calendar!!");
     if(typeof adjuster !== 'undefined'){
       var newDate = new Date(calendar.Selected.Year, calendar.Selected.Month + adjuster, 1);
       calendar = new Calendar(calendar.Model, calendar.Options, newDate);
@@ -53,6 +54,7 @@ var Calendar = function(model, options, date){
         typeof calendar.Options[key] != 'function' && typeof calendar.Options[key] != 'object' && calendar.Options[key]?element.className += " " + key + "-" + calendar.Options[key]:0;
       }
     }
+    console.log(calendar.Selected.Year + "年" + (calendar.Selected.Month + 1) + "月");
     var months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
   
     function AddSidebar(){
@@ -74,14 +76,16 @@ var Calendar = function(model, options, date){
           x.className += ' cld-rwd cld-nav';
           x.addEventListener('click', function(){
             typeof calendar.Options.ModelChange == 'function'?calendar.Model = calendar.Options.ModelChange():calendar.Model = calendar.Options.ModelChange;
-            createCalendar(calendar, element, -1);});
+            createCalendar(calendar, element, -1);
+          });
           x.innerHTML += '<svg height="15" width="15" viewBox="0 0 100 75" fill="rgba(255,255,255,0.5)"><polyline points="0,75 100,75 50,0"></polyline></svg>';
         }
         else if(i==months.length - 4){
           x.className += ' cld-fwd cld-nav';
           x.addEventListener('click', function(){
             typeof calendar.Options.ModelChange == 'function'?calendar.Model = calendar.Options.ModelChange():calendar.Model = calendar.Options.ModelChange;
-            createCalendar(calendar, element, 1);} );
+            createCalendar(calendar, element, 1);
+          });
           x.innerHTML += '<svg height="15" width="15" viewBox="0 0 100 75" fill="rgba(255,255,255,0.5)"><polyline points="0,0 100,0 50,75"></polyline></svg>';
         }
         else{

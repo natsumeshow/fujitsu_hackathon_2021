@@ -1,7 +1,15 @@
 import cv2
 from pathlib import Path
 import numpy as np
-from dammy import model
+from model import model
+import tensorflow as tf
+from tf_pose.estimator import TfPoseEstimator
+from tf_pose.networks import get_graph_path
+
+
+w, h = 432, 368
+e = TfPoseEstimator(get_graph_path('cmu'), target_size=(w, h), tf_config=tf.ConfigProto(log_device_placement=True))
+
 
 def path2id(videoPath):
     videoInfo = videoPath.name.split('.')
@@ -19,13 +27,15 @@ def make_landmark(videoPath, landmarkPath):
     ret, frame = cap.read()
     lms = []
     while ret:
+        print(len(lms))
         # frames.append(frame)
-        ret, frame = cap.read()
         lm = np.zeros([18,2])
-        y = model(frame, 0, (True,True), 4)
+        y = model(frame, e, (True,True), 4)
         for key in y:
             lm[key,:] = y[key]
         lms.append(lm)
+        ret, frame = cap.read()
+    lms.append(lms[-1])
     print(np.array(lms).shape)
     # print(len(frames))
     # print(frames[0].shape)

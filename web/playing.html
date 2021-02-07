@@ -19,62 +19,49 @@
 	
 	<!-- 動画指定場所 -->
 	<div class="movie">
-<<<<<<< HEAD
-	  <video id="movie" src="../data/0000.mp4"></video>
-=======
 	  <video id="movie"></video>
->>>>>>> 0718196bbaef1fd46b47665e7a5ebba849218262
 	  <canvas id="canvas" height="950px" width="1670px"></canvas>
 	</div>
-	
-	<!-- 小窓 
-	     <div class="camera">
-	       <video id="camera" width="300" height="250" style="-webkit-transform: scaleX(-1);" autoplay="1"></video>
-	     </div>
-	     -->
-	     
-	     <!-- 撮影済みダンス動画 -->
-	     <div class="takenMovie">
-	       <video id="takenMovie" src="../data/0000.mp4"></video>
-	     </div>
-	     
-	     <!-- <canvas id="canvas" width="1200px" height="1000px"></canvas> -->
 
-	     <br>
-	     <!-- buttons -->
-	     <div class="bottom">
-	       <button onclick="Play1()" class="btn-flat-stripe1" style="width:200px;height:100px">start</button>
-	       <button onclick="Pause1()" class="btn-flat-stripe2" style="width:200px;height:100px">stop</button>
-	       <button onclick="PlayFromFirst1()" class="btn-flat-stripe3" style="width:200px;height:100px">restart</button>	
-	     </div>
-	     
-	     <!-- 再生終了すると結果画面へ -->
-	     <!--
-		 <video playsinline muted autoplay onended="GoToResult()"></video>
-		 -->
-		 
+	<!-- for send picture
+	<canvas id="picture" height="270px" width="480px" style="display:none"></canvas>
+	-->
+	
+	<!-- 小窓 -->
+	<div class="camera">
+	  <video id="camera" width="300" height="250" style="-webkit-transform: scaleX(-1);" autoplay="1"></video>
+	</div>
+
+	
+	<!-- <canvas id="canvas" width="1200px" height="1000px"></canvas> -->
+
+	<br>
+	<!-- buttons -->
+	<div class="bottom">
+	  <button onclick="Play1()" class="btn-flat-stripe1" style="width:200px;height:100px">start</button>
+	  <button onclick="Pause1()" class="btn-flat-stripe2" style="width:200px;height:100px">stop</button>
+	  <button onclick="PlayFromFirst1()" class="btn-flat-stripe3" style="width:200px;height:100px">restart</button>	
+	</div>
+	
+	<!-- 再生終了すると結果画面へ -->
+	<!--
+	    <video playsinline muted autoplay onended="GoToResult()"></video>
+	    -->
+	    
       </div>
 
       <script type="text/javascript">
 	
 	//最初から再生
 	
-<<<<<<< HEAD
-	//window.onload = () => {
-	    //const video  = document.querySelector("#camera");
-	    //const canvas = document.querySelector("#picture");
-	    // const se     = document.querySelector('#se');
-=======
 	window.onload = () => {
 		document.getElementById('movie').setAttribute("src", localStorage.music_path);
-	    const video  = document.querySelector("#camera");
+	    /*const video  = document.querySelector("#camera");
 	   //const canvas = document.querySelector("#picture");
 	   // const se     = document.querySelector('#se');
->>>>>>> 0718196bbaef1fd46b47665e7a5ebba849218262
 
 	    //カメラ設定
-	    /*
-            const constraints = {
+	    const constraints = {
 		audio: false,
 		video: {
 		    width: 500,
@@ -94,10 +81,9 @@
 		})
 		.catch( (err) => {
 		    console.log(err.name + ": " + err.message);
-		});
+		});*/
 
 	};
-        */
 	
       </script>
 
