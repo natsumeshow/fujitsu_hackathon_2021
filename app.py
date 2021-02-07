@@ -184,6 +184,25 @@ def movement(y1, y2, size):
     mov = sum/len(interkeys) if len(interkeys)!=0 else 0
     return np.sqrt((mov/size**2))*100
 
+@eel.expose
+def save_movement(movement):
+    today = datetime.date.today()
+    year = today.strftime("%Y")
+    month = today.strftime("%m")
+    #os.mkdir(path , exist_ok=True)
+    fout_tracking = open(('log.txt'), 'a')
+    fout_tracking.write( year+", " + month + ", " + str(movement) + '\n')
+
+@eel.expose
+def read_movement():
+    #path = "./movement/{}/{}/{}/".format(id,uu_id,year_month)
+    movements = pd.read_csv('log.txt' , sep =',' , header = None )
+    M_list = []
+    for y , m , movement in zip(movements[0], movements[1] ,movements[2]):
+        M_list.append(y)
+        M_list.append(m)
+        M_list.append(movement)
+    return M_list
 
 eel.init("./")
 eel.start("web/select.html", port=8000)

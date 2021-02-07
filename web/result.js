@@ -1,6 +1,7 @@
 'use strict'
 
-function save(){
+async function save(){
+    var val = await eel.save_movement(localStorage.movement);
     console.log("save");
 }
 
