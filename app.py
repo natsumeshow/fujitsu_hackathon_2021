@@ -11,17 +11,17 @@ from model import model
 import tensorflow as tf
 from tf_pose.estimator import TfPoseEstimator
 from tf_pose.networks import get_graph_path
+import pandas as pd
 
 
 w, h = 432, 368
 e = TfPoseEstimator(get_graph_path('cmu'), target_size=(w, h), tf_config=tf.ConfigProto(log_device_placement=True))
-k = 0.00002
+k = 0.002
 
 id = 'unknown'
 videoPath = ''
 isValid = False
 landmark = np.array([])
-k = 0.002
 scoreLog = []
 lmLog = []
 resultDir = 'unknown'
@@ -37,6 +37,8 @@ def select_dance(_id):
     global id, videoPath, isValid, scoreLog, cap, landmark, fps
     id = _id
     videoPath = 'data/{}.mp4'.format(id)
+    # if not os.path.exists(videoPath):
+    #     videoPath = 'data/{}.mov'.format(id)
     if os.path.isfile(videoPath):
         fps = cv2.VideoCapture(videoPath).get(cv2.CAP_PROP_FPS)
         isValid = True
@@ -84,6 +86,8 @@ def disp_score(t):
     cam_shift, cam_resize = opt_param(lm_cam)
     vid_shift, vid_resize = opt_param(lm_video)
 
+    if cam_resize == 0:
+        cam_resize = 50
     sum_mov += movement(y, y_log[-1], cam_resize) if len(y_log)>0 else 0
     y_log.append(y)
     print(y)
@@ -100,12 +104,14 @@ def disp_score(t):
         else:
             vid_resize = vid_resize_before * 0.1 + vid_resize * 0.9
 
-    # if cam_resize != 0 and vid_resize != 0:
-        # lm_cam = (lm_cam - cam_shift) * (vid_resize / cam_resize) + vid_shift
-        # lm_cam = (lm_cam - cam_shift) + vid_shift
 
 
     out_landmark = {i: ((lm_cam[i,:]*1.74).tolist() if i in y.keys() else [-1,-1]) for i in range(14)}
+
+
+    if cam_resize != 0 and vid_resize != 0:
+        lm_cam = (lm_cam - cam_shift) * (vid_resize / cam_resize) + vid_shift
+        # lm_cam = (lm_cam - cam_shift) + vid_shift
 
     s = score(lm_cam,lm_video)
     lmLog.append(lm_cam)
@@ -121,11 +127,11 @@ def opt_param(lm):
         return lm[1,:], 0
     else:
         if lm[8,0]==0:
-            return lm[1,:], np.sum((lm[11,:]-lm[1,:])**2)
+            return lm[1,:], np.linalg.norm(lm[11,:]-lm[1,:])
         elif lm[11,0]==0:
-            return lm[1,:], np.sum((lm[8,:]-lm[1,:])**2)
+            return lm[1,:], np.linalg.norm(lm[8,:]-lm[1,:])
         else:
-            return lm[1,:], np.sum((lm[[8,11],:]-lm[1,:])**2)/np.sqrt(2)
+            return lm[1,:], np.linalg.norm(lm[[8,11],:]-lm[1,:])/np.sqrt(2)
 
 
 def opt(a, b):
@@ -139,6 +145,7 @@ def opt(a, b):
 
 def score(a,b):
     global k
+    print(k)
     L2 = np.linalg.norm(a-b)
     s = np.exp(-L2*k)*100
     return s

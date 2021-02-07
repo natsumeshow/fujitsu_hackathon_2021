@@ -59,9 +59,10 @@ async function Play1(){
             }else{
 
                 var val = await eel.disp_score(getCurrentTime())();
+                console.log(val.isPlaying);
 
                 if(val.isPlaying){
-                    //console.log(val.score);
+                    console.log(val.score);
                     deleteCanvas();
                     drawMatchRate(val.score);
                     drawStickFig(val.landmark);
@@ -142,19 +143,20 @@ function drawStickFig(val){
         }
     }
 
-    drawLine(val[0], val[13]);
-    drawLine(val[1], val[13]);
-    drawLine(val[4], val[13]);
+    drawLine(val[0], val[1]);
     drawLine(val[1], val[2]);
     drawLine(val[2], val[3]);
-    drawLine(val[4], val[5]);
+    drawLine(val[3], val[4]);
+    drawLine(val[1], val[5]);
     drawLine(val[5], val[6]);
-    drawLine(val[13], val[7]);
-    drawLine(val[7], val[8]);
+    drawLine(val[6], val[7]);
+    drawLine(val[1], val[8]);
     drawLine(val[8], val[9]);
-    drawLine(val[13], val[10]);
-    drawLine(val[10], val[11]);
+    drawLine(val[9], val[10]);
+    drawLine(val[1], val[11]);
     drawLine(val[11], val[12]);
+    drawLine(val[12], val[13]);
+
 
 }
 

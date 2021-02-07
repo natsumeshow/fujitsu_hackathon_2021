@@ -15,7 +15,7 @@ def path2id(videoPath):
     videoInfo = videoPath.name.split('.')
     if len(videoInfo)<1:
         return False, False
-    elif not videoInfo[1] in ['mp4']:
+    elif not videoInfo[1] in ['mp4','mov']:
         return False, False
     else:
         return True, videoInfo[0]

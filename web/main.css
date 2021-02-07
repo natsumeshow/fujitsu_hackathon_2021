@@ -35,21 +35,11 @@ div.canvas{
     right: 25px;
 }
 
-
-div.takenMovie{
-    height: 250px;
-    width: 300px;
-    position: absolute;
-    bottom: 86px;
-    right: 25px;
-}
-/*
 div.camera{
     position: absolute;
-    bottom: 100px;
+    bottom: 68px;
     right: 25px;
 }
-*/
 
 
 div.bottom{

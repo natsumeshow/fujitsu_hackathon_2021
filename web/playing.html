@@ -56,32 +56,32 @@
 	
 	window.onload = () => {
 		document.getElementById('movie').setAttribute("src", localStorage.music_path);
-	    /*const video  = document.querySelector("#camera");
+	    const video  = document.querySelector("#camera");
 	   //const canvas = document.querySelector("#picture");
 	   // const se     = document.querySelector('#se');
 
 	    //カメラ設定
-	    const constraints = {
-		audio: false,
-		video: {
-		    width: 500,
-		    height: 300,
-		    facingMode: "user"   // フロントカメラを利用する
-		    // facingMode: { exact: "environment" }  // リアカメラを利用する場合
-		}
-	    };
+	    // const constraints = {
+		// audio: false,
+		// video: {
+		//     width: 500,
+		//     height: 300,
+		//     facingMode: "user"   // フロントカメラを利用する
+		//     // facingMode: { exact: "environment" }  // リアカメラを利用する場合
+		// }
+	    // };
 
-	    //カメラを<video>と同期
-	    navigator.mediaDevices.getUserMedia(constraints)
-		.then( (stream) => {
-		    video.srcObject = stream;
-		    video.onloadedmetadata = (e) => {
-			video.play();
-		    };
-		})
-		.catch( (err) => {
-		    console.log(err.name + ": " + err.message);
-		});*/
+	    // //カメラを<video>と同期
+	    // navigator.mediaDevices.getUserMedia(constraints)
+		// .then( (stream) => {
+		//     video.srcObject = stream;
+		//     video.onloadedmetadata = (e) => {
+		// 	video.play();
+		//     };
+		// })
+		// .catch( (err) => {
+		//     console.log(err.name + ": " + err.message);
+		// });
 
 	};
 	
