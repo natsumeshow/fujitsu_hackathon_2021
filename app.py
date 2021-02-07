@@ -196,18 +196,20 @@ def save_movement(movement):
     today = datetime.date.today()
     year = today.strftime("%Y")
     month = today.strftime("%m")
+    day = today.strftime("%d")
     #os.mkdir(path , exist_ok=True)
     fout_tracking = open(('log.txt'), 'a')
-    fout_tracking.write( year+", " + month + ", " + str(movement) + '\n')
+    fout_tracking.write( year+", " + month + ", " + day + ", " + str(movement) + '\n')
 
 @eel.expose
 def read_movement():
     #path = "./movement/{}/{}/{}/".format(id,uu_id,year_month)
     movements = pd.read_csv('log.txt' , sep =',' , header = None )
     M_list = []
-    for y , m , movement in zip(movements[0], movements[1] ,movements[2]):
+    for y , m , d , movement in zip(movements[0], movements[1] ,movements[2] ,movements[3]):
         M_list.append(y)
         M_list.append(m)
+        M_list.append(d)
         M_list.append(movement)
     return M_list
 
